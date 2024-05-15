@@ -30,7 +30,7 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Run cucumber 
-      run: TEST_ENV=${{ github.event.inputs.env }} WITH_IMAGE=true npm test
+      run: TEST_ENV=${{ github.event.inputs.env }} WITH_IMAGE=true npm test --scheme="QLD"
 
     - uses: actions/upload-artifact@v3
       if: always()
