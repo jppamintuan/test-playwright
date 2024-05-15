@@ -1,0 +1,46 @@
+{
+    "scheme": "VIC",
+    "email": "bestbm47@cesteam.testinator.com",
+    "legalEntityName": "First Supplier 47",
+    "abn": "01236757047",
+    "acn": null,
+    "tradingName": "First Supplier 47",
+    "entityTypeCode": "PUB",
+    "participantTypeCode": "Beverage Manufacturer",
+    "smallBeverageManufacturer": true,
+    "gstApplicable": true,
+    "contacts": [
+        {
+            "roles": [
+                "AUTHORISED"
+            ],
+            "firstName": "Jake",
+            "lastName": "CES",
+            "email": "bestbm47@cesteam.testinator.com",
+            "phoneNumber": "1236567890",
+            "positionTitle": "First Supplier 47"
+        }
+    ],
+    "registeredAddress": {
+        "country": "Australia",
+        "line1": "123 fake street",
+        "line2": null,
+        "citySuburb": "sydney",
+        "state": "NSW",
+        "postCode": "2222"
+    },
+    "businessAddress": {
+        "country": "Australia",
+        "line1": "123 fake street",
+        "line2": null,
+        "citySuburb": "sydney",
+        "state": "NSW",
+        "postCode": "2222"
+    },
+    "bankBranch": "CTI Citibank n.a.",
+    "bankAccountName": "integration bsb company",
+    "bankAccountNumber": "34385477",
+    "bsb": null,
+    "manufacturerSize": "LARGE",
+    "invoiceFrequency": "MONTHLY"
+}

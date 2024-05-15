@@ -1,0 +1,59 @@
+{
+    "QLD": {
+        "sit": {
+            "posApiUserName": "",
+            "agreementUser": "a853bafa5d674fd7b312e6eee9be6244",
+            "agreementPass": "a7ee1247-d118-42a4-8417-64e16c03b95d"
+        },
+        "uat": {
+            "posApiUserName": "platformstest@cesteam.testinator.com",
+            "agreementUser": "d606f39e8d4d41bdb1fc6b7b1d75d8d0",
+            "agreementPass": "5d36cff9-ddd6-40dc-8fbb-9d23005332de"
+        },
+        "scheme": "QLD",
+        "multiSchemeId": "10000",
+        "posApiUserName": "platformstest@cesteam.testinator.com",
+        "defaultPassWord": "Welcome123456",
+        "customerId": "C11704726",
+        "financePayrunCreatorUserName": "l1approverqld@cesteam.testinator.com",
+        "financePayrunApproverUserName": "l22approverqld@cesteam.testinator.com"
+    },
+    "WA": {
+        "sit": {
+            "posApiUserName": "",
+            "agreementUser": "e60fb0a719664d28b401d2b63d7cd0f6",
+            "agreementPass": "45025838-9098-422f-a110-a7eb35bc659b"
+        },
+        "uat": {
+            "posApiUserName": "platformstest@cesteam.testinator.com",
+            "agreementUser": "ef77260cfcf34dd094d9ffbda2450052",
+            "agreementPass": "def5a75e-bf7c-44d0-94e5-5feffb3d71da"
+        },
+        "scheme": "WA",
+        "multiSchemeId": "10001",
+        "posApiUserName": "platformstest@cesteam.testinator.com",
+        "defaultPassWord": "Welcome123456",
+        "customerId": "",
+        "financePayrunCreatorUserName": "",
+        "financePayrunApproverUserName": ""
+    },
+    "VIC": {
+        "sit": {
+            "posApiUserName": "",
+            "agreementUser": "",
+            "agreementPass": ""
+        },
+        "uat": {
+            "posApiUserName": "platformstest@cesteam.testinator.com",
+            "agreementUser": "",
+            "agreementPass": ""
+        },
+        "scheme": "VIC_NOP_A",
+        "multiSchemeId": "100020001",
+        "posApiUserName": "platformstest@cesteam.testinator.com",
+        "defaultPassWord": "Welcome123456",
+        "customerId": "",
+        "financePayrunCreatorUserName": "",
+        "financePayrunApproverUserName": ""
+    }
+}
