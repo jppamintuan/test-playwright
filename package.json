@@ -1,0 +1,43 @@
+{
+  "name": "playwright-bdd-template",
+  "version": "1.1.0",
+  "description": "Playwrigh BDD Template",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env cucumber-js --config=config/cucumber.js || true",
+    "posttest": "npx ts-node src/utils/report/report.ts",
+    "test:failed": "cucumber-js -p rerun src/utils/report/@rerun.txt",
+    "sync-results": "node ./node_modules/automation-shared-library/src/utils/syncResults.js"
+  },
+  "keywords": [
+    "cucumber",
+    "Typescript",
+    "playwright-BDD"
+  ],
+  "author": "@zef-ces",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.0.1",
+    "@cucumber/pretty-formatter": "^1.0.0",
+    "@faker-js/faker": "^8.3.1",
+    "@playwright/test": "^1.40.0",
+    "@types/cucumber": "^7.0.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.8.6",
+    "@types/pg": "^8.11.6",
+    "fs-extra": "^11.1.1",
+    "multiple-cucumber-html-reporter": "^3.6.0",
+    "ts-node": "^10.9.2",
+    "winston": "^3.11.0"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.8.1",
+    "axios": "^1.6.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "jira-client-xray": "^1.0.1",
+    "pg": "^8.11.5",
+    "typed-rest-client": "^1.8.11",
+    "typescript": "^5.2.2"
+  }
+}
