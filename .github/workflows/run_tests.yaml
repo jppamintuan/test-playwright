@@ -9,32 +9,28 @@ on:
         required: true
         options:
           - uat
-          - sit
 
 run-name: Running playwright tests on ${{ github.event.inputs.env }}
 
 jobs:
-  test:
-    timeout-minutes: 60
-    runs-on: self-hosted
+  fetch-secrets:
+    runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up HashiCorp Vault
+      uses: hashicorp/vault-action@v2.4.0
       with:
-        node-version: 18
+        url: https://vault.svc.coexservices.com.au
+        token: hvs.CAESICT0I0xjCa2vk1K4l18Ln-DXICTvpGkjsQIvEqjIGEoBGh4KHGh2cy41clVySjNpQXlPZEt1cnY3dktaNTJRQW8
 
-    - name: Install dependencies
-      run: npm install
+    - name: Fetch secrets from Vault
+      id: fetch-secrets
+      run: |
+        echo "Fetching secrets from Vault"
+        vault kv get -format=json automation/fs-sales-volume-test-automation-env-sit | jq -r '.data.data | to_entries | map("\(.key)=\(.value|tostring)") | .[]' > .env
 
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-
-    - name: Run cucumber 
-      run: TEST_ENV=${{ github.event.inputs.env }} WITH_IMAGE=true npm test --scheme="QLD"
-
-    - uses: actions/upload-artifact@v3
-      if: always()
-      with:
-        name: playwright-report
-        path: cucumber-report.html
-        retention-days: 30
+    - name: Show .env file content (for debug purposes)
+      run: cat .env
