@@ -28,15 +28,3 @@ jobs:
         method: jwt
         path: github-actions
         exportToken: true
-
-    - name: Export secrets from Vault
-      id: export-secrets
-      uses: hashicorp/vault-action@v2
-      with:
-        url: https://vault.svc.coexservices.com.au
-        method: token
-        token: hvs.CAESICT0I0xjCa2vk1K4l18Ln-DXICTvpGkjsQIvEqjIGEoBGh4KHGh2cy41clVySjNpQXlPZEt1cnY3dktaNTJRQW8
-        run: vault kv get -format=json automation/fs-sales-volume-test-automation-env-sit | jq -r '.data.data | to_entries | map("\(.key)=\(.value|tostring)") | .[]' > .env
-        
-    - name: Show .env file content (for debug purposes)
-      run: cat .env
