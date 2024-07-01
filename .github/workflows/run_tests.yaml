@@ -31,5 +31,6 @@ jobs:
       run: |
         echo "Fetching secrets from Vault"
         vault kv get -format=json automation/fs-sales-volume-test-automation-env-sit | jq -r '.data.data | to_entries | map("\(.key)=\(.value|tostring)") | .[]' > .env
+        
     - name: Show .env file content (for debug purposes)
       run: cat .env
