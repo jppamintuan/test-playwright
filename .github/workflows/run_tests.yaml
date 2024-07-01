@@ -9,22 +9,32 @@ on:
         required: true
         options:
           - uat
+          - sit
 
 run-name: Running playwright tests on ${{ github.event.inputs.env }}
 
 jobs:
-  fetch-secrets:
+  test:
+    timeout-minutes: 60
     runs-on: self-hosted
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Setup Vault
-      uses: hashicorp/vault-action@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
       with:
-        url: https://vault.svc.coexservices.com.au
-        role: github-actions-role
-        method: jwt
-        path: github-actions
-        exportToken: true
+        node-version: 18
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+
+    - name: Run cucumber 
+      run: TEST_ENV=${{ github.event.inputs.env }} WITH_IMAGE=true npm test --scheme="QLD"
+
+    - uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: playwright-report
+        path: cucumber-report.html
+        retention-days: 30
