@@ -20,17 +20,23 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up HashiCorp Vault
-      uses: hashicorp/vault-action@v2.4.0
+    - name: Setup Vault
+      uses: hashicorp/vault-action@v2
       with:
         url: https://vault.svc.coexservices.com.au
-        token: hvs.CAESICT0I0xjCa2vk1K4l18Ln-DXICTvpGkjsQIvEqjIGEoBGh4KHGh2cy41clVySjNpQXlPZEt1cnY3dktaNTJRQW8
+        role: github-actions-role
+        method: jwt
+        path: github-actions
+        exportToken: true
 
-    - name: Fetch secrets from Vault
-      id: fetch-secrets
-      run: |
-        echo "Fetching secrets from Vault"
-        vault kv get -format=json automation/fs-sales-volume-test-automation-env-sit | jq -r '.data.data | to_entries | map("\(.key)=\(.value|tostring)") | .[]' > .env
+    - name: Export secrets from Vault
+      id: export-secrets
+      uses: hashicorp/vault-action@v2
+      with:
+        url: https://vault.svc.coexservices.com.au
+        method: token
+        token: hvs.CAESICT0I0xjCa2vk1K4l18Ln-DXICTvpGkjsQIvEqjIGEoBGh4KHGh2cy41clVySjNpQXlPZEt1cnY3dktaNTJRQW8
+        run: vault kv get -format=json automation/fs-sales-volume-test-automation-env-sit | jq -r '.data.data | to_entries | map("\(.key)=\(.value|tostring)") | .[]' > .env
         
     - name: Show .env file content (for debug purposes)
       run: cat .env
